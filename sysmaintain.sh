@@ -1,11 +1,16 @@
 #!/bin/bash
 
-echo -e "\n$(date "+%d-%m-%Y --- %T") --- Starting work\n"
+# Auhtor: Mohammad Shadman
 
-apt-get update
-apt-get -y upgrade
+# It will update & clean the system.  
 
-apt-get -y autoremove
-apt-get autoclean
+echo -e "\n$(date "+%d-%m-%Y --- %T") --- Starting\n"
 
-echo -e "\n$(date "+%T") \t Script Terminated"
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade 
+sudo apt-get -y autoremove
+sudo apt-get -y clean
+sudo apt-get -y autoclean
+
+echo -e "\n$(date "+%d-%m-%Y --- %T") --- Done"
