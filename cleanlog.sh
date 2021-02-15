@@ -1,7 +1,14 @@
 #!/bin/bash
-LOG_DIR=/var/log
-cd $LOG_DIR
 
+# Author: Mohammad Shadman
+
+# It will clean the log directory in the system. 
+
+cd /var/log
 cat /dev/null > messages
 cat /dev/null > wtmp
-echo "Logs cleaned up."
+if [ $? == 0 ]
+then echo "Done"
+else echo "Permisson denied: Type 'sudo ./cleanlog.sh'"
+fi
+
