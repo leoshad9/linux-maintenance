@@ -1,1 +1,1 @@
-Useful bash scripts for cleaning and maintaining your linux system.
+Useful bash scripts for cleaning and maintaining the Linux system.
