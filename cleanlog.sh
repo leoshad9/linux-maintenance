@@ -4,11 +4,20 @@
 
 # It will clean the log directory in the system. 
 
-cd /var/log
-cat /dev/null > messages
-cat /dev/null > wtmp
-if [ $? == 0 ]
-then echo "Done"
-else echo "Permisson denied: Type 'sudo ./cleanlog.sh'"
-fi
+LOG_DIR="/var/log"
+FILES=("messages" "wtmp")
 
+# Navigate to the log directory
+cd "$LOG_DIR" || { echo "Failed to access $LOG_DIR"; exit 1; }
+
+# Clear the specified log files
+for file in "${FILES[@]}"; do
+    if sudo truncate -s 0 "$file"; then
+        echo "$file cleared successfully."
+    else
+        echo "Failed to clear $file. Try running the script with sudo."
+        exit 1
+    fi
+done
+
+echo "Log files cleaned."
