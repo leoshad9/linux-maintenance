@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Author: Mohammad Shadman
-# Description: Cleans specific log files in the /var/log directory.
 
 set -euo pipefail  # Enable strict error handling
 
