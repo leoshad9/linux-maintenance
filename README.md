@@ -1,4 +1,4 @@
-# Linux System Maintenance Scripts
+# Linux System Maintenance
 
 This repository contains Bash scripts for Linux system maintenance tasks, such as cleaning log files and updating the Linux system.
 
