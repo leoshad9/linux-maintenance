@@ -19,13 +19,19 @@ log_file="/var/log/sysmaintain.log"
 run_command() {
     local cmd="$1"
     echo "Running: $cmd" | tee -a "$log_file"
-    if $cmd >>"$log_file" 2>&1; then
+    if eval "$cmd" >>"$log_file" 2>&1; then
         echo "Completed: $cmd" | tee -a "$log_file"
     else
-        echo "Error: Command failed - $cmd" >&2
+        echo "Error: Command failed - $cmd" | tee -a "$log_file" >&2
         exit 1
     fi
 }
+
+# Check for sudo privileges
+if [[ "$EUID" -ne 0 ]]; then
+    echo "Error: This script must be run as root. Exiting." >&2
+    exit 1
+fi
 
 echo -e "\n$(date "+%d-%m-%Y --- %T") --- Starting system update and cleanup\n" | tee -a "$log_file"
 
